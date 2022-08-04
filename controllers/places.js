@@ -1,24 +1,9 @@
 const router = require('express').Router()
+const places = require('../models/places.js')
 
 router.get('/', (req,res) => {
-    let places = [{
-        name: 'H-Thai-ML',
-        city: 'Seattle',
-        state: 'WA',
-        cuisines: 'Thai, Pan-Asian',
-        pic: '/images/h-tai.jpg'
-    }, {
-        name: 'Coding Cat Cafe',
-        city: 'Phoenix',
-        state: 'AZ',
-        cuisines: 'Coffee, Bakery',
-        pic: '/images/cat-cafe.jpg'
-    }]
-    res.render('places/index', {places})
-})
 
-router.get('/new', (req,res) => {
-    res.render('places/new')
+res.render('places/index', {places})
 })
 
 router.post('/', (req, res) => {
@@ -35,6 +20,12 @@ router.post('/', (req, res) => {
     places.push(req.body)
     res.redirect('/places')
   })
+
+router.get('/new', (req,res) => {
+    res.render('places/new')
+})
+
+
   
 
 module.exports = router
