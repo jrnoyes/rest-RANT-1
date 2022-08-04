@@ -20,6 +20,7 @@ function show (data) {
                 <h3>Cuisines</h3>
                 {data.place.cuisines}
             </div>
+            <div class= "btn-group">
             <a href={`/places/${data.id}/edit`} className="btn btn-warning">
                 Edit
             </a>
@@ -28,6 +29,7 @@ function show (data) {
                     Delete
                 </button>
             </form>
+            </div>  
           </main>
         </Def>
         

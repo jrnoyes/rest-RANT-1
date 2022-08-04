@@ -2,7 +2,6 @@ const router = require('express').Router()
 const places = require('../models/places.js')
 
 router.get('/', (req,res) => {
-
 res.render('places/index', {places})
 })
 
@@ -38,19 +37,6 @@ router.get('/:id', (req, res) => {
   }
 })
 
-router.get('/:id/edit', (req, res) => {
-  let id = Number(req.params.id)
-  if (isNaN(id)) {
-      res.render('error404')
-  }
-  else if (!places[id]) {
-      res.render('error404')
-  }
-  else {
-    res.render('places/edit', { place: places[id] })
-  }
-})
-
 router.put('/:id', (req, res) => {
   let id = Number(req.params.id)
   if (isNaN(id)) {
@@ -73,10 +59,25 @@ router.put('/:id', (req, res) => {
       }
 
       // Save the new data into places[id]
-      places[id] = req.body
+      places[id] = req.body;
       res.redirect(`/places/${id}`)
   }
 })
+
+router.get('/:id/edit', (req, res) => {
+  let id = Number(req.params.id)
+  if (isNaN(id)) {
+      res.render('error404')
+  }
+  else if (!places[id]) {
+      res.render('error404')
+  }
+  else {
+    res.render('places/edit', { place: places[id], index: req.params.id })
+  }
+})
+
+
 
 
 
