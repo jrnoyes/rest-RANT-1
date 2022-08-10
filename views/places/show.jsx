@@ -7,7 +7,11 @@ function show (data) {
             
           <main>
             <h1>{data.place.name}</h1>
-            <img src = {data.place.pic} />
+            <img src = {data.place.pic} alt={data.place.name} />
+
+            <h3>
+                Located in {data.place.city}, {data.place.state}
+            </h3>
             <div>
                 <h3>Rating</h3>
                 <p>Not Rated</p>
@@ -16,9 +20,12 @@ function show (data) {
                 <h3>Description</h3>
                 {data.place.city}, {data.place.state}
             </div>
+                <h3>
+                    {data.place.showEstablished()}
+                </h3>
             <div>
                 <h3>Cuisines</h3>
-                {data.place.cuisines}
+                 Serving {data.place.cuisines}
             </div>
             <div class= "btn-group">
             <a href={`/places/${data.id}/edit`} className="btn btn-warning">
